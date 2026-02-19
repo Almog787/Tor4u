@@ -1,6 +1,9 @@
+<p align="center">
+  <img src="https://github.com/Almog787/Tor4u/blob/23806039964ab720efdbf137719691ed3c08e113/logoo-100.png?raw=true" width="200" alt="Riva Yehezkel Logo">
+</p>
 # 📲 מערכת QR דינמית - ריבה יחזקאל בקרות
 
-מערכת לניהול הפניה דינמית עבור משרות דרושים. כל שינוי בקובץ `config.txt` מעדכן אוטומטית את יעד ה-QR.
+ניהול הפניה דינמית עבור משרות דרושים. כל שינוי בקובץ `config.txt` מעדכן אוטומטית את יעד ה-QR ב-README.
 
 ## 🤳 קוד ה-QR לסריקה
 <p align="center">
@@ -15,7 +18,7 @@
 | **סטטוס הפניה** | פעיל ✅ |
 | **יעד הפניה נוכחי** | [https://www.riba.co.il/career/](https://www.riba.co.il/career/) |
 | **כתובת הדף (Live)** | [https://Almog787.github.io/Tor4u/](https://Almog787.github.io/Tor4u/) |
-| **עדכון אחרון** | 19/02/2026 11:31 |
+| **עדכון אחרון** | 19/02/2026 11:32 |
 
 ---
 ### 💡 הנחיות למנהל המערכת
