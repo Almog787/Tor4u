@@ -76,15 +76,15 @@ jobs:
           echo "2. לחצו על אייקון העיפרון (**Edit**) בצד ימין." >> README.md
           echo "3. החליפו את הכתובת הקיימת בכתובת החדשה (וודאו שהיא מתחילה ב-http)." >> README.md
           echo "4. לחצו על **Commit changes** בתחתית הדף." >> README.md
-          echo "> **הערה:** המערכת תתעדכן באופן אוטומטי תוך מספר שניות מרגע השמירה." >> README.md
+          echo "> **הערה:** המערכת תתעדכן באופן אוטומטית תוך מספר שניות מרגע השמירה." >> README.md
           echo "" >> README.md
           echo "---" >> README.md
-          echo '<p align="right">פותח על ידי צוות פיתוח - GitHub Senior Partner Partner Partner Partner Partner Partner Partner</p>' >> README.md
+          echo '<p align="right"><b>פותח על ידי Almog Shaked</b></p>' >> README.md
 
       - name: Commit and Push changes
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add README.md
-          git commit -m "Admin: Professional README update for client delivery" || echo "No changes to commit"
+          git commit -m "Admin: Professional README update with developer credit" || echo "No changes to commit"
           git push
