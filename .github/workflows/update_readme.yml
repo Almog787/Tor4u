@@ -1,0 +1,68 @@
+name: Auto Update README with Riva Yehezkel QR
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'config.txt'
+      - 'index.html'
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Extract URL and Update README
+        run: |
+          # 1. Fetch the target URL from config.txt (Fail-safe: defaults to direct link if file missing)
+          if [ -f config.txt ]; then
+            TARGET_URL=$(cat config.txt | xargs)
+          else
+            TARGET_URL="https://www.riba.co.il/career/"
+          fi
+          
+          # 2. Set the Live Site URL (GitHub Pages)
+          # Replace 'YOUR_USERNAME' and 'YOUR_REPO' with your actual details
+          LIVE_SITE_URL="https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"
+          
+          # 3. Last update timestamp (Approx. Israel Time)
+          LAST_UPDATE=$(date -u -d "+2 hours" +'%d/%m/%Y %H:%M')
+
+          # 4. Generate README.md content
+          echo "# 📲 מערכת QR דינמית - ריבה יחזקאל בקרות" > README.md
+          echo "" >> README.md
+          echo "מערכת לניהול הפניה דינמית עבור משרות דרושים. כל שינוי בקובץ \`config.txt\` מעדכן אוטומטית את יעד ה-QR." >> README.md
+          echo "" >> README.md
+          echo "## 🤳 קוד ה-QR לסריקה" >> README.md
+          echo '<p align="center">' >> README.md
+          echo '  <img src="./job_qr_code.png" width="300" alt="Recruitment QR Code">' >> README.md
+          echo '</p>' >> README.md
+          echo "" >> README.md
+          echo "---" >> README.md
+          echo "" >> README.md
+          echo "## 📊 סטטוס ומידע טכני" >> README.md
+          echo "| נתון | פרטים |" >> README.md
+          echo "| :--- | :--- |" >> README.md
+          echo "| **סטטוס הפניה** | פעיל ✅ |" >> README.md
+          echo "| **יעד הפניה נוכחי** | [$TARGET_URL]($TARGET_URL) |" >> README.md
+          echo "| **כתובת הדף (Live)** | [$LIVE_SITE_URL]($LIVE_SITE_URL) |" >> README.md
+          echo "| **עדכון אחרון** | $LAST_UPDATE |" >> README.md
+          echo "" >> README.md
+          echo "---" >> README.md
+          echo "### 💡 הנחיות למנהל המערכת" >> README.md
+          echo "כדי לשנות את היעד אליו ה-QR שולח את המועמדים, יש לערוך את הקובץ [config.txt](./config.txt) במאגר זה." >> README.md
+
+      - name: Commit and Push changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git commit -m "Bot: Updated README with new redirect target and timestamp" || echo "No changes to commit"
+          git push
