@@ -21,7 +21,7 @@
 | **מצב חיבור** | פעיל ותקין ✅ |
 | **כתובת הפניה נוכחית** | [https://www.riba.co.il/career/](https://www.riba.co.il/career/) |
 | **דף נחיתה פעיל (Live)** | [https://Almog787.github.io/Tor4u/](https://Almog787.github.io/Tor4u/) |
-| **עדכון אחרון** | 19/02/2026 11:34 |
+| **עדכון אחרון** | 19/02/2026 11:36 |
 | **ניטור ומעקב** | Google Analytics 4 פעיל 📈 |
 
 ---
