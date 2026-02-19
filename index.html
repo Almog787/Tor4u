@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riva Yehezkel - Career Portal</title>
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #ffffff;
+            color: #333;
+            text-align: center;
+        }
+        .container {
+            padding: 2rem;
+            max-width: 400px;
+        }
+        .spinner {
+            border: 3px solid rgba(0, 0, 0, 0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border-left-color: #0056b3;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto 20px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        h2 { font-weight: 500; font-size: 1.2rem; margin-bottom: 10px; }
+        p { color: #666; font-size: 0.9rem; }
+        a { color: #0056b3; text-decoration: none; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="spinner"></div>
+        <h2 id="status">מעבר לעמוד קריירה - ריבה יחזקאל</h2>
+        <p id="info">אנא המתן, אנו מעבירים אותך לאתר הדרושים...</p>
+        <p id="fallback" style="display:none;">
+            אם לא הועברת אוטומטית, <a id="manual-link" href="#">לחץ כאן</a>.
+        </p>
+    </div>
+
+    <script>
+        /**
+         * Resilient Redirect Script
+         * Reads from config.txt and handles Google Analytics timing
+         */
+        async function initRedirect() {
+            const statusText = document.getElementById('status');
+            const fallback = document.getElementById('fallback');
+            const manualLink = document.getElementById('manual-link');
+
+            try {
+                // Fetch config with cache-busting
+                const response = await fetch('config.txt?v=' + Date.now());
+                
+                if (!response.ok) throw new Error('Config not found');
+
+                const targetUrl = (await response.text()).trim();
+
+                if (targetUrl && targetUrl.startsWith('http')) {
+                    manualLink.href = targetUrl;
+                    
+                    // Small delay to allow Analytics tags to fire before redirect
+                    setTimeout(() => {
+                        window.location.replace(targetUrl);
+                    }, 1200);
+
+                    // Show fallback link after 5 seconds if redirect hangs
+                    setTimeout(() => {
+                        fallback.style.display = 'block';
+                    }, 5000);
+                } else {
+                    statusText.innerText = "שגיאת תצורה: כתובת יעד לא תקינה";
+                }
+
+            } catch (error) {
+                console.error('Redirect Error:', error);
+                statusText.innerText = "השירות אינו זמין זמנית";
+            }
+        }
+
+        window.onload = initRedirect;
+    </script>
+</body>
+</html>
