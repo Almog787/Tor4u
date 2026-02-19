@@ -19,9 +19,9 @@
 | נתון | סטטוס / ערך |
 | :--- | :--- |
 | **מצב חיבור** | פעיל ותקין ✅ |
-| **כתובת הפניה נוכחית** | [https://www.riba.co.il/career/](https://www.riba.co.il/career/) |
+| **כתובת הפניה נוכחית** | [https://pagespeed.web.dev/analysis/https-almog787-github-io-Pokedex/5tzn7pdrpe?form_factor=mobile](https://pagespeed.web.dev/analysis/https-almog787-github-io-Pokedex/5tzn7pdrpe?form_factor=mobile) |
 | **דף נחיתה פעיל (Live)** | [https://Almog787.github.io/Tor4u/](https://Almog787.github.io/Tor4u/) |
-| **עדכון אחרון** | 19/02/2026 11:36 |
+| **עדכון אחרון** | 19/02/2026 11:38 |
 | **ניטור ומעקב** | Google Analytics 4 פעיל 📈 |
 
 ---
