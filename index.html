@@ -1,9 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="he" dir="rtl">
 <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZHT161HLX5"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-ZHT161HLX5');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Riva Yehezkel - Career Portal</title>
+    <title>ריבה יחזקאל - דף הפניה</title>
     
     <style>
         body {
@@ -40,10 +48,11 @@
     </style>
 </head>
 <body>
+
     <div class="container">
         <div class="spinner"></div>
         <h2 id="status">מעבר לעמוד קריירה - ריבה יחזקאל</h2>
-        <p id="info">אנא המתן, אנו מעבירים אותך לאתר הדרושים...</p>
+        <p id="info">אנא המתן, אנו מעבירים אותך לאתר המשרות...</p>
         <p id="fallback" style="display:none;">
             אם לא הועברת אוטומטית, <a id="manual-link" href="#">לחץ כאן</a>.
         </p>
@@ -51,8 +60,7 @@
 
     <script>
         /**
-         * Resilient Redirect Script
-         * Reads from config.txt and handles Google Analytics timing
+         * Dynamic Redirect Logic with Tracking Support
          */
         async function initRedirect() {
             const statusText = document.getElementById('status');
@@ -60,35 +68,36 @@
             const manualLink = document.getElementById('manual-link');
 
             try {
-                // Fetch config with cache-busting
+                // Fetch target URL from config.txt with cache-busting
                 const response = await fetch('config.txt?v=' + Date.now());
                 
-                if (!response.ok) throw new Error('Config not found');
+                if (!response.ok) throw new Error('Config file missing');
 
                 const targetUrl = (await response.text()).trim();
 
                 if (targetUrl && targetUrl.startsWith('http')) {
                     manualLink.href = targetUrl;
                     
-                    // Small delay to allow Analytics tags to fire before redirect
+                    // Delay redirect by 1.5 seconds to ensure Analytics tag fires
                     setTimeout(() => {
                         window.location.replace(targetUrl);
-                    }, 1200);
+                    }, 1500);
 
-                    // Show fallback link after 5 seconds if redirect hangs
+                    // Show fallback link after 5 seconds if needed
                     setTimeout(() => {
                         fallback.style.display = 'block';
                     }, 5000);
                 } else {
-                    statusText.innerText = "שגיאת תצורה: כתובת יעד לא תקינה";
+                    statusText.innerText = "שגיאה: כתובת יעד לא תקינה ב-config.txt";
                 }
 
             } catch (error) {
                 console.error('Redirect Error:', error);
-                statusText.innerText = "השירות אינו זמין זמנית";
+                statusText.innerText = "השירות אינו זמין כרגע";
             }
         }
 
+        // Execute when page is fully loaded
         window.onload = initRedirect;
     </script>
 </body>
