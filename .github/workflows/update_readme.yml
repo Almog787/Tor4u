@@ -21,7 +21,7 @@ jobs:
 
       - name: Extract URL and Update README
         run: |
-          # 1. Fetch the target URL from config.txt (Fail-safe: defaults to direct link if file missing)
+          # 1. Fetch the target URL from config.txt
           if [ -f config.txt ]; then
             TARGET_URL=$(cat config.txt | xargs)
           else
@@ -29,17 +29,24 @@ jobs:
           fi
           
           # 2. Set the Live Site URL (GitHub Pages)
-          # Replace 'YOUR_USERNAME' and 'YOUR_REPO' with your actual details
           LIVE_SITE_URL="https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"
           
-          # 3. Last update timestamp (Approx. Israel Time)
+          # 3. Logo URL (Raw path)
+          LOGO_URL="https://github.com/Almog787/Tor4u/blob/23806039964ab720efdbf137719691ed3c08e113/logoo-100.png?raw=true"
+          
+          # 4. Last update timestamp (Israel Time)
           LAST_UPDATE=$(date -u -d "+2 hours" +'%d/%m/%Y %H:%M')
 
-          # 4. Generate README.md content
-          echo "# 📲 מערכת QR דינמית - ריבה יחזקאל בקרות" > README.md
+          # 5. Generate README.md content
+          echo '<p align="center">' > README.md
+          echo "  <img src=\"$LOGO_URL\" width=\"200\" alt=\"Riva Yehezkel Logo\">" >> README.md
+          echo "</p>" >> README.md
+          
+          echo "# 📲 מערכת QR דינמית - ריבה יחזקאל בקרות" >> README.md
           echo "" >> README.md
-          echo "מערכת לניהול הפניה דינמית עבור משרות דרושים. כל שינוי בקובץ \`config.txt\` מעדכן אוטומטית את יעד ה-QR." >> README.md
+          echo "ניהול הפניה דינמית עבור משרות דרושים. כל שינוי בקובץ \`config.txt\` מעדכן אוטומטית את יעד ה-QR ב-README." >> README.md
           echo "" >> README.md
+          
           echo "## 🤳 קוד ה-QR לסריקה" >> README.md
           echo '<p align="center">' >> README.md
           echo '  <img src="./job_qr_code.png" width="300" alt="Recruitment QR Code">' >> README.md
@@ -47,6 +54,7 @@ jobs:
           echo "" >> README.md
           echo "---" >> README.md
           echo "" >> README.md
+          
           echo "## 📊 סטטוס ומידע טכני" >> README.md
           echo "| נתון | פרטים |" >> README.md
           echo "| :--- | :--- |" >> README.md
@@ -64,5 +72,5 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add README.md
-          git commit -m "Bot: Updated README with new redirect target and timestamp" || echo "No changes to commit"
+          git commit -m "Bot: Updated README with Logo and Redirect Status" || echo "No changes to commit"
           git push
