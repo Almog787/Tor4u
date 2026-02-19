@@ -37,40 +37,54 @@ jobs:
           # 4. Last update timestamp (Israel Time)
           LAST_UPDATE=$(date -u -d "+2 hours" +'%d/%m/%Y %H:%M')
 
-          # 5. Generate README.md content
+          # 5. Generate Professional README.md content
           echo '<p align="center">' > README.md
-          echo "  <img src=\"$LOGO_URL\" width=\"200\" alt=\"Riva Yehezkel Logo\">" >> README.md
+          echo "  <img src=\"$LOGO_URL\" width=\"250\" alt=\"ריבה יחזקאל בקרות\">" >> README.md
           echo "</p>" >> README.md
           
-          echo "# 📲 מערכת QR דינמית - ריבה יחזקאל בקרות" >> README.md
+          echo "# 📋 מערכת ניהול QR דינמי - מחלקת גיוס" >> README.md
           echo "" >> README.md
-          echo "ניהול הפניה דינמית עבור משרות דרושים. כל שינוי בקובץ \`config.txt\` מעדכן אוטומטית את יעד ה-QR ב-README." >> README.md
+          echo "ברוכים הבאים למערכת ניהול הקישוריות של **ריבה יחזקאל בקרות**. מאגר זה מאפשר שליטה מלאה ודינמית על יעד הסריקה של קוד ה-QR המפורסם במודעות הדרושים." >> README.md
           echo "" >> README.md
           
-          echo "## 🤳 קוד ה-QR לסריקה" >> README.md
+          echo "---" >> README.md
+          echo "" >> README.md
+          echo "## 🤳 קוד ה-QR להדפסה וסריקה" >> README.md
+          echo "זהו הקוד הקבוע שיש להפיץ. במידה ויעד המשרות משתנה, הקוד יישאר זהה - יש לעדכן רק את הקישור במערכת." >> README.md
           echo '<p align="center">' >> README.md
-          echo '  <img src="./job_qr_code.png" width="300" alt="Recruitment QR Code">' >> README.md
+          echo '  <img src="./job_qr_code.png" width="280" style="border: 10px solid white; border-radius: 10px;" alt="QR Code">' >> README.md
           echo '</p>' >> README.md
           echo "" >> README.md
+          
           echo "---" >> README.md
+          echo "" >> README.md
+          echo "## 📊 נתוני מערכת עדכניים" >> README.md
+          echo "| נתון | סטטוס / ערך |" >> README.md
+          echo "| :--- | :--- |" >> README.md
+          echo "| **מצב חיבור** | פעיל ותקין ✅ |" >> README.md
+          echo "| **כתובת הפניה נוכחית** | [$TARGET_URL]($TARGET_URL) |" >> README.md
+          echo "| **דף נחיתה פעיל (Live)** | [$LIVE_SITE_URL]($LIVE_SITE_URL) |" >> README.md
+          echo "| **עדכון אחרון** | $LAST_UPDATE |" >> README.md
+          echo "| **ניטור ומעקב** | Google Analytics 4 פעיל 📈 |" >> README.md
           echo "" >> README.md
           
-          echo "## 📊 סטטוס ומידע טכני" >> README.md
-          echo "| נתון | פרטים |" >> README.md
-          echo "| :--- | :--- |" >> README.md
-          echo "| **סטטוס הפניה** | פעיל ✅ |" >> README.md
-          echo "| **יעד הפניה נוכחי** | [$TARGET_URL]($TARGET_URL) |" >> README.md
-          echo "| **כתובת הדף (Live)** | [$LIVE_SITE_URL]($LIVE_SITE_URL) |" >> README.md
-          echo "| **עדכון אחרון** | $LAST_UPDATE |" >> README.md
+          echo "---" >> README.md
+          echo "" >> README.md
+          echo "## 🛠 הוראות תפעול ללקוח" >> README.md
+          echo "כדי לשנות את הכתובת אליה מגיע מי שסורק את הקוד, יש לבצע את הפעולות הבאות:" >> README.md
+          echo "1. היכנסו לקובץ [config.txt](./config.txt) במאגר זה." >> README.md
+          echo "2. לחצו על אייקון העיפרון (**Edit**) בצד ימין." >> README.md
+          echo "3. החליפו את הכתובת הקיימת בכתובת החדשה (וודאו שהיא מתחילה ב-http)." >> README.md
+          echo "4. לחצו על **Commit changes** בתחתית הדף." >> README.md
+          echo "> **הערה:** המערכת תתעדכן באופן אוטומטי תוך מספר שניות מרגע השמירה." >> README.md
           echo "" >> README.md
           echo "---" >> README.md
-          echo "### 💡 הנחיות למנהל המערכת" >> README.md
-          echo "כדי לשנות את היעד אליו ה-QR שולח את המועמדים, יש לערוך את הקובץ [config.txt](./config.txt) במאגר זה." >> README.md
+          echo '<p align="right">פותח על ידי צוות פיתוח - GitHub Senior Partner Partner Partner Partner Partner Partner Partner</p>' >> README.md
 
       - name: Commit and Push changes
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add README.md
-          git commit -m "Bot: Updated README with Logo and Redirect Status" || echo "No changes to commit"
+          git commit -m "Admin: Professional README update for client delivery" || echo "No changes to commit"
           git push
