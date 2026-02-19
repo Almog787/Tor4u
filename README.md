@@ -1,25 +1,38 @@
 <p align="center">
-  <img src="https://github.com/Almog787/Tor4u/blob/23806039964ab720efdbf137719691ed3c08e113/logoo-100.png?raw=true" width="200" alt="Riva Yehezkel Logo">
+  <img src="https://github.com/Almog787/Tor4u/blob/23806039964ab720efdbf137719691ed3c08e113/logoo-100.png?raw=true" width="250" alt="ריבה יחזקאל בקרות">
 </p>
-# 📲 מערכת QR דינמית - ריבה יחזקאל בקרות
+# 📋 מערכת ניהול QR דינמי - מחלקת גיוס
 
-ניהול הפניה דינמית עבור משרות דרושים. כל שינוי בקובץ `config.txt` מעדכן אוטומטית את יעד ה-QR ב-README.
+ברוכים הבאים למערכת ניהול הקישוריות של **ריבה יחזקאל בקרות**. מאגר זה מאפשר שליטה מלאה ודינמית על יעד הסריקה של קוד ה-QR המפורסם במודעות הדרושים.
 
-## 🤳 קוד ה-QR לסריקה
+---
+
+## 🤳 קוד ה-QR להדפסה וסריקה
+זהו הקוד הקבוע שיש להפיץ. במידה ויעד המשרות משתנה, הקוד יישאר זהה - יש לעדכן רק את הקישור במערכת.
 <p align="center">
-  <img src="./job_qr_code.png" width="300" alt="Recruitment QR Code">
+  <img src="./job_qr_code.png" width="280" style="border: 10px solid white; border-radius: 10px;" alt="QR Code">
 </p>
 
 ---
 
-## 📊 סטטוס ומידע טכני
-| נתון | פרטים |
+## 📊 נתוני מערכת עדכניים
+| נתון | סטטוס / ערך |
 | :--- | :--- |
-| **סטטוס הפניה** | פעיל ✅ |
-| **יעד הפניה נוכחי** | [https://www.riba.co.il/career/](https://www.riba.co.il/career/) |
-| **כתובת הדף (Live)** | [https://Almog787.github.io/Tor4u/](https://Almog787.github.io/Tor4u/) |
-| **עדכון אחרון** | 19/02/2026 11:32 |
+| **מצב חיבור** | פעיל ותקין ✅ |
+| **כתובת הפניה נוכחית** | [https://www.riba.co.il/career/](https://www.riba.co.il/career/) |
+| **דף נחיתה פעיל (Live)** | [https://Almog787.github.io/Tor4u/](https://Almog787.github.io/Tor4u/) |
+| **עדכון אחרון** | 19/02/2026 11:34 |
+| **ניטור ומעקב** | Google Analytics 4 פעיל 📈 |
 
 ---
-### 💡 הנחיות למנהל המערכת
-כדי לשנות את היעד אליו ה-QR שולח את המועמדים, יש לערוך את הקובץ [config.txt](./config.txt) במאגר זה.
+
+## 🛠 הוראות תפעול ללקוח
+כדי לשנות את הכתובת אליה מגיע מי שסורק את הקוד, יש לבצע את הפעולות הבאות:
+1. היכנסו לקובץ [config.txt](./config.txt) במאגר זה.
+2. לחצו על אייקון העיפרון (**Edit**) בצד ימין.
+3. החליפו את הכתובת הקיימת בכתובת החדשה (וודאו שהיא מתחילה ב-http).
+4. לחצו על **Commit changes** בתחתית הדף.
+> **הערה:** המערכת תתעדכן באופן אוטומטי תוך מספר שניות מרגע השמירה.
+
+---
+<p align="right">פותח על ידי צוות פיתוח - GitHub Senior Partner Partner Partner Partner Partner Partner Partner</p>
